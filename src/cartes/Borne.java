@@ -4,7 +4,6 @@ public class Borne extends Carte {
 
 	public Borne(int nombre) {
 		super(nombre);
-		// TODO Auto-generated constructor stub
 	}
 	private int km;
 	public Borne(int nombre, int km) {
