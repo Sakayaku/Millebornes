@@ -10,7 +10,7 @@ public class Botte extends Bataille {
 	public String toString() {
 		switch (super.type) {
 		case FEU:
-			return "VéhiculePrioritaire";
+			return "Vï¿½hiculePrioritaire";
 		case ESSENCE:
 			return "Citerne d'essence";
 		case CREVAISON:
@@ -23,9 +23,9 @@ public class Botte extends Bataille {
 	}
 	@Override
 	public boolean equals(Object obj) {
-		if(obj instanceof Bataille){
-			Bataille bataille = (Bataille) obj;
-		return type.equals(bataille.type);
+		if(obj instanceof Botte){
+			Botte botte = (Botte) obj;
+		return type.equals(botte.type);
 		}else {
 			return false;
 		}

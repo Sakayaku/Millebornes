@@ -21,6 +21,17 @@ public class Attaque extends Bataille {
 			return "Y'a eu un soucis";
 		}
 	}
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Attaque){
+			Attaque attaque = (Attaque) obj;
+		return type.equals(attaque.type);
+		}else {
+			return false;
+		}
+	}
+
+	
 	
 	
 

@@ -14,7 +14,7 @@ public class Sabot implements Iterable <Carte>{
 	public Sabot(int capacite) {
 		this.capacite=capacite;
 		pioche=new Carte[capacite];
-	};
+	}
 	
 	
 	public boolean estVide() {

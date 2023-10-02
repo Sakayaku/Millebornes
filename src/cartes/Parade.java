@@ -15,9 +15,18 @@ public class Parade extends Bataille {
 		case CREVAISON:
 			return "Roue de Secours";
 		case ACCIDENT:
-			return "Réparations";
+			return "RÃ©parations";
 		default:
 			return "Y'a eu un soucis";
+		}
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Parade){
+			Parade parade = (Parade) obj;
+		return type.equals(parade.type);
+		}else {
+			return false;
 		}
 	}
 	
