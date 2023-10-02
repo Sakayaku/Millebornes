@@ -15,7 +15,7 @@ public class Parade extends Bataille {
 		case CREVAISON:
 			return "Roue de Secours";
 		case ACCIDENT:
-			return "RÃ©parations";
+			return "Réparations";
 		default:
 			return "Y'a eu un soucis";
 		}

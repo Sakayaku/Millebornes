@@ -10,11 +10,11 @@ public class Sabot implements Iterable <Carte>{
 	private int nbCartes=0;
 	private int capacite;
 	private Carte[] pioche;
+	private int nombreOperations=0;
 	public Sabot(int capacite) {
 		this.capacite=capacite;
 		pioche=new Carte[capacite];
-	}
-	private int nombreOperations=0;
+	};
 	
 	
 	public boolean estVide() {
@@ -26,6 +26,7 @@ public class Sabot implements Iterable <Carte>{
 		}else {
 			pioche[nbCartes]=carte;
 			nbCartes++;
+			nombreOperations++;
 		}
 	}
 	public void ajouterFamilleCarte (Carte carte) {
@@ -37,6 +38,11 @@ public class Sabot implements Iterable <Carte>{
 		for (int i=0;i<carte.length;i++) {
 			ajouterFamilleCarte(carte[i]);
 		}
+	}
+	
+	@Override
+	public Iterator<Carte> iterator() {
+		return new Iterateur();
 	}
 	
 	private class Iterateur implements Iterator <Carte>{
@@ -51,6 +57,7 @@ public class Sabot implements Iterable <Carte>{
 			if (hasNext()) {
 				Carte selection=pioche[indiceIterateur];
 				indiceIterateur++;
+				nextEffectue=true;
 				return selection;
 			}else {
 				throw new NoSuchElementException();
@@ -59,14 +66,17 @@ public class Sabot implements Iterable <Carte>{
 		@Override
 		public void remove() {
 			verificationConcurrence();
-			if (nbCartes<1) {
+			if (nbCartes<1 || !nextEffectue) {
 				throw new IllegalStateException();
 			}
 			for (int i=indiceIterateur-1;i<nbCartes-1;i++) {
 				pioche[i]=pioche[i+1];
 			}
+			nextEffectue=false;
 			indiceIterateur--;
 			nbCartes--;
+			nombreOperations++;
+			nombreOperationReference++;
 		}
 		private void verificationConcurrence() {
 			if (nombreOperations!=nombreOperationReference) {
@@ -75,11 +85,6 @@ public class Sabot implements Iterable <Carte>{
 		}
 	}
 
-	@Override
-	public Iterator<Carte> iterator() {
-		return new Iterateur();
-	}
-	
 	public Carte piocher() {
 		Iterator<Carte> iterateur=iterator();
 		System.out.print("je pioche ");

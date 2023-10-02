@@ -20,22 +20,18 @@ public class Test1 {
 		Parade carteReparation= new Parade(3,paradeAccident);
 		Botte carteAs= new Botte(1,botteAccident);
 		sabot.ajouterFamilleCarte(carteAccident,carteReparation,carteAs);
-		Iterator<Carte> iterateur=sabot.iterator();
 		System.out.println("Avec une suite de piocher():");
-		System.out.println(sabot.piocher().toString());
-		System.out.println(sabot.piocher().toString());
-		System.out.println(sabot.piocher().toString());
-		System.out.println(sabot.piocher().toString());
-		System.out.println(sabot.piocher().toString());
-		System.out.println(sabot.piocher().toString());
-		System.out.println(sabot.piocher().toString());
-		System.out.println("Avec un iterateur et remove():");
-		sabot.ajouterFamilleCarte(carteAccident,carteReparation,carteAs);
 		while(!sabot.estVide()) {
-			System.out.println("je pioche "+iterateur.next().toString());
-			iterateur.remove();
+			System.out.println(sabot.piocher());
 		}
-		sabot.piocher();
+		sabot.ajouterFamilleCarte(carteAccident,carteReparation,carteAs);
+		System.out.println("Avec un iterateur et remove():");
+		for (Iterator <Carte> iter = sabot.iterator(); iter.hasNext();) {
+			Carte carte = iter.next();
+			System.out.println("je pioche "+carte);
+			iter.remove();
+		}
 		sabot.ajouterFamilleCarte(carteAs);
+		System.out.println(sabot.piocher());
 	}
 }
