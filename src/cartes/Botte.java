@@ -19,10 +19,15 @@ public class Botte extends Bataille {
 			return "As du volant";
 		default:
 			return "Y'a eu un soucis";
-		}
-			
+		}		
 	}
-	
-	
-
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Bataille){
+			Bataille bataille = (Bataille) obj;
+		return type.equals(bataille.type);
+		}else {
+			return false;
+		}
+	}
 }
