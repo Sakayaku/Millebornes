@@ -33,7 +33,7 @@ public class Utils {
 	public static <T> List<T>  melanger(List<T> liste){
 		List<T> resultat =new ArrayList<>();
 		while (!liste.isEmpty()) {
-			resultat.add(extraireListeIterator(liste));
+			resultat.add(extraireListe(liste));
 		}
 		return resultat;
 	}
@@ -53,16 +53,17 @@ public class Utils {
 	}
 	public static <T> List<T> rassembler(List<T> liste){
 		List<T> resultat =new ArrayList<>();
+		if (liste.isEmpty()) {
+			return resultat;
+		}
 		for (ListIterator<T> listIterateur1 =liste.listIterator();listIterateur1.hasNext();) {
-			for (ListIterator<T> listIterateur2 =liste.listIterator();listIterateur2.hasNext();) {
-				if (listIterateur2.next().equals(listIterateur1.next())) {
-					resultat.add(listIterateur2.next());
-					//listIterateur2.set(listIterateur1.next());
-					System.out.println("Y'a deux élements consécutifs là");
-				}
+			T elementCourantListe=listIterateur1.next();
+			if (resultat.contains(elementCourantListe)) {
+				resultat.add(resultat.lastIndexOf(elementCourantListe), elementCourantListe);
+			}else {
+				resultat.add(elementCourantListe);
 			}
 		}
-		System.out.println("On affiche le resultat "+resultat);
 		return resultat;
 		}
 	

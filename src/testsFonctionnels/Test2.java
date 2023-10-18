@@ -60,21 +60,37 @@ public class Test2 {
 			List listeRassemblerTest=new ArrayList();
 			listeOriginaleSansModif.addAll(listeOriginale);
 			listeOriginaleAvecModif.addAll(listeOriginale);
-			System.out.println("Affichage de l'ancienne liste");
+			System.out.println("~~~~Affichage de l'ancienne liste~~~~");
 			System.out.println(listeOriginaleSansModif);
-			System.out.println("On mélange la liste");
+			System.out.println("~~~~On mélange la liste~~~~");
 			nouvelleListe.addAll(Utils.melanger(listeOriginaleAvecModif));
-			System.out.println("Affichage de la nouvelle liste");
+			System.out.println("~~~~Affichage de la nouvelle liste~~~~");
 			System.out.println(nouvelleListe);
 			/*for (Carte carte:nouvelleListe) {
 				System.out.println(carte);
 				
 			}*/
-			System.out.println("On vérifie que la liste avant mélange a le même nombre d'occurence que celle après le mélange: ");
+			System.out.println("~~~~On vérifie que la liste avant mélange a le même nombre d'occurence que celle après le mélange~~~~");
 			System.out.println(Utils.verifierMelange(listeOriginaleSansModif, nouvelleListe));
+						
+			System.out.println("~~~~Tests des rassemblements~~~~");
+			System.out.println("Affichage de la liste avant rassemblement "+listeRassemblerTest);
+			System.out.println("Affichage de la liste après rassemblement "+Utils.rassembler(listeRassemblerTest));
+			System.out.println("Vérification rassemblement "+Utils.verifierRassemblement(listeRassemblerTest));
+			listeRassemblerTest.clear();
 			Collections.addAll(listeRassemblerTest, 1,1,2,1,3);
-			System.out.println("Affichage de la liste rassemblement "+listeRassemblerTest);
-			System.out.println("Vérification du rassemblement sur la liste");
-			System.out.println(Utils.rassembler(listeRassemblerTest));
+			System.out.println("Affichage de la liste avant rassemblement "+listeRassemblerTest);
+			System.out.println("Affichage de la liste après rassemblement "+Utils.rassembler(listeRassemblerTest));
+			System.out.println("Vérification rassemblement "+Utils.verifierRassemblement(listeRassemblerTest));
+			listeRassemblerTest.clear();
+			Collections.addAll(listeRassemblerTest, 1,4,3,2);
+			System.out.println("Affichage de la liste avant rassemblement "+listeRassemblerTest);
+			System.out.println("Affichage de la liste après rassemblement "+Utils.rassembler(listeRassemblerTest));
+			System.out.println("Vérification rassemblement "+Utils.verifierRassemblement(listeRassemblerTest));
+			listeRassemblerTest.clear();
+			Collections.addAll(listeRassemblerTest, 1,1,2,3,1);
+			System.out.println("Affichage de la liste avant rassemblement "+listeRassemblerTest);
+			System.out.println("Affichage de la liste après rassemblement "+Utils.rassembler(listeRassemblerTest));
+			System.out.println("Vérification rassemblement "+Utils.verifierRassemblement(listeRassemblerTest));
 		}
 }
