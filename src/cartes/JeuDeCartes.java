@@ -63,11 +63,6 @@ public class JeuDeCartes {
 				}
 			}
 		return true;
-		
-		/*for (Iterator<Carte> iterator = listeCartes.iterator();iterator.hasNext();) {
-			
-		}
-		return true;*/
 	}
 	
 	

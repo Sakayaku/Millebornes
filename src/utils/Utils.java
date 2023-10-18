@@ -69,6 +69,9 @@ public class Utils {
 	
 	
 	public static <T> boolean verifierRassemblement(List <T> liste) {
+		ListIterator<T> listIterateurSensLogique =liste.listIterator();
+		ListIterator<T> listIterateurSensInverse =liste.listIterator();
 		return true;
+
 	}
 }

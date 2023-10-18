@@ -50,9 +50,9 @@ public class Test2 {
 		System.out.println("CheckCount du jeu sans modification "+jeu.checkCount());
 		listCarte.remove(0);
 		System.out.println("CheckCount du jeu après modification "+jeu.checkCount());*/
-		Test(listCarte);
+		testMethodesUtils(listCarte);
 		}
-		public static <T> void Test(List<T> listeOriginale){
+		public static <T> void testMethodesUtils(List<T> listeOriginale){
 			List<T> listeOriginaleSansModif=new ArrayList<>();
 			List<T> listeOriginaleAvecModif=new ArrayList<>();
 			List<T> nouvelleListe=new ArrayList<>();
