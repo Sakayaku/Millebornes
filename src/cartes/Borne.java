@@ -2,9 +2,6 @@ package cartes;
 
 public class Borne extends Carte {
 
-	public Borne(int nombre) {
-		super(nombre);
-	}
 	private int km;
 	public Borne(int nombre, int km) {
 		super(nombre);
@@ -12,6 +9,11 @@ public class Borne extends Carte {
 	}
 	public int getKm() {
 		return km;
+	}
+	
+	@Override
+	public String toString() {
+		return ("Borne "+km+" km");
 	}
 
 

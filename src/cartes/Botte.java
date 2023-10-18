@@ -10,7 +10,7 @@ public class Botte extends Bataille {
 	public String toString() {
 		switch (super.type) {
 		case FEU:
-			return "V�hiculePrioritaire";
+			return "VéhiculePrioritaire";
 		case ESSENCE:
 			return "Citerne d'essence";
 		case CREVAISON:
