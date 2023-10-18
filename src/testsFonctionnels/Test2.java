@@ -50,47 +50,19 @@ public class Test2 {
 		System.out.println("CheckCount du jeu sans modification "+jeu.checkCount());
 		listCarte.remove(0);
 		System.out.println("CheckCount du jeu après modification "+jeu.checkCount());*/
-		testMethodesUtils(listCarte);
+		testMethodesUtils();
+		System.out.println(jeu.checkCount());
 		}
-		public static <T> void testMethodesUtils(List<T> listeOriginale){
-			List<T> listeOriginaleSansModif=new ArrayList<>();
-			List<T> listeOriginaleAvecModif=new ArrayList<>();
-			List<T> nouvelleListe=new ArrayList<>();
-			List<T> listeRassembler=new ArrayList<>();
-			List listeRassemblerTest=new ArrayList();
-			listeOriginaleSansModif.addAll(listeOriginale);
-			listeOriginaleAvecModif.addAll(listeOriginale);
-			System.out.println("~~~~Affichage de l'ancienne liste~~~~");
-			System.out.println(listeOriginaleSansModif);
-			System.out.println("~~~~On mélange la liste~~~~");
-			nouvelleListe.addAll(Utils.melanger(listeOriginaleAvecModif));
-			System.out.println("~~~~Affichage de la nouvelle liste~~~~");
-			System.out.println(nouvelleListe);
-			/*for (Carte carte:nouvelleListe) {
-				System.out.println(carte);
-				
-			}*/
-			System.out.println("~~~~On vérifie que la liste avant mélange a le même nombre d'occurence que celle après le mélange~~~~");
-			System.out.println(Utils.verifierMelange(listeOriginaleSansModif, nouvelleListe));
-						
-			System.out.println("~~~~Tests des rassemblements~~~~");
-			System.out.println("Affichage de la liste avant rassemblement "+listeRassemblerTest);
-			System.out.println("Affichage de la liste après rassemblement "+Utils.rassembler(listeRassemblerTest));
-			System.out.println("Vérification rassemblement "+Utils.verifierRassemblement(listeRassemblerTest));
-			listeRassemblerTest.clear();
-			Collections.addAll(listeRassemblerTest, 1,1,2,1,3);
-			System.out.println("Affichage de la liste avant rassemblement "+listeRassemblerTest);
-			System.out.println("Affichage de la liste après rassemblement "+Utils.rassembler(listeRassemblerTest));
-			System.out.println("Vérification rassemblement "+Utils.verifierRassemblement(listeRassemblerTest));
-			listeRassemblerTest.clear();
-			Collections.addAll(listeRassemblerTest, 1,4,3,2);
-			System.out.println("Affichage de la liste avant rassemblement "+listeRassemblerTest);
-			System.out.println("Affichage de la liste après rassemblement "+Utils.rassembler(listeRassemblerTest));
-			System.out.println("Vérification rassemblement "+Utils.verifierRassemblement(listeRassemblerTest));
-			listeRassemblerTest.clear();
-			Collections.addAll(listeRassemblerTest, 1,1,2,3,1);
-			System.out.println("Affichage de la liste avant rassemblement "+listeRassemblerTest);
-			System.out.println("Affichage de la liste après rassemblement "+Utils.rassembler(listeRassemblerTest));
-			System.out.println("Vérification rassemblement "+Utils.verifierRassemblement(listeRassemblerTest));
+		public static void testMethodesUtils(){
+			JeuDeCartes jeu=new JeuDeCartes(); 
+			List<Carte>listeCarteNonMelangee=jeu.getListeCartes();
+			List<Carte>listeCarteAvecModifs=new ArrayList<>(listeCarteNonMelangee);
+			System.out.println("~Liste avant m�lange\n"+listeCarteAvecModifs); 
+			listeCarteAvecModifs=Utils.melanger(listeCarteAvecModifs);
+			System.out.println("~Liste apr�s m�lange\n"+listeCarteAvecModifs);
+			System.out.println("~Liste m�lang�e sans erreur : "+Utils.verifierMelange(listeCarteNonMelangee,listeCarteAvecModifs));
+			listeCarteAvecModifs=Utils.rassembler(listeCarteAvecModifs); 
+			System.out.println("~Liste apr�s rassemblement\n"+listeCarteAvecModifs);
+			System.out.println("~Liste rassembl�e sans erreur : "+Utils.verifierRassemblement(listeCarteAvecModifs)); 
 		}
 }

@@ -32,7 +32,6 @@ public class JeuDeCartes {
         typesDeCartes[16] = new Borne(4, 200);
         typesDeCartes[17] = new FinLimite(6);
         typesDeCartes[18] = new DebutLimite(4);
-        //Collections.addAll(listeCartes, typesDeCartes);
         for (int i=0;i<typesDeCartes.length;i++) {
         	for (int j=0;j<typesDeCartes[i].getNombre();j++) {
         		listeCartes.add(typesDeCartes[i]);
@@ -56,12 +55,22 @@ public class JeuDeCartes {
 		this.listeCartes = listeCartes;
 	}
 	
+	public int calculerFrequence(List<Carte> listeCarte, Carte typeDeCarte) {
+		int resultat=0;
+		for (Carte carte:listeCarte) {
+			if (carte.equals(typeDeCarte)) {
+				resultat+=1;
+			}
+		}
+		return resultat;
+	}
+	
 	public boolean checkCount() {
 		for (int i=0;i<typesDeCartes.length;i++) {
-				if ((Collections.frequency(listeCartes, typesDeCartes[i]) !=typesDeCartes[i].getNombre())) {
-					return false;
-				}
+			if (calculerFrequence(listeCartes,typesDeCartes[i])!=typesDeCartes[i].getNombre()) {
+				return false;
 			}
+		}
 		return true;
 	}
 	

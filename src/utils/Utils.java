@@ -40,8 +40,7 @@ public class Utils {
 	
 	public static <T> boolean verifierMelange(List<T> liste1, List<T> liste2){
 		if (liste1.size()!=liste2.size()) {
-			System.out.println("Les listes ne font pas les mÃªmes tailles");
-			System.out.println("Taille de la liste 1 "+liste1.size()+" taille de la liste 2 "+liste2.size());
+			System.out.println("Les listes ne font pas les mêmes tailles");
 			return false;
 		}
 		for (T elemList:liste1) {
@@ -51,6 +50,7 @@ public class Utils {
 		}
 		return true;
 	}
+	
 	public static <T> List<T> rassembler(List<T> liste){
 		List<T> resultat =new ArrayList<>();
 		if (liste.isEmpty()) {
@@ -65,13 +65,23 @@ public class Utils {
 			}
 		}
 		return resultat;
+	}
+	
+	public static <T> boolean verifierRassemblement(List <T> liste) { //deux boucles dans deux methodes differentes
+		for (ListIterator<T> listIterateurSensLogique =liste.listIterator();listIterateurSensLogique.hasNext();) {
+			T elementBonSens=listIterateurSensLogique.next();
+			while(elementBonSens.equals(listIterateurSensLogique.next())) {
+				elementBonSens=listIterateurSensLogique.next();
+			}
+			for (ListIterator<T> listIterateurSensInverse =liste.listIterator(liste.size());listIterateurSensInverse.hasPrevious();) {
+				T elementMauvaisSens=listIterateurSensInverse.previous();
+				System.out.println("elementMauvaisSens est "+elementMauvaisSens);
+				if (elementMauvaisSens.equals(elementBonSens)) {
+					System.out.println("elementMauvaisSens est "+elementMauvaisSens+" elementBonSens est "+elementBonSens);
+					return false;
+				}
+			}
 		}
-	
-	
-	public static <T> boolean verifierRassemblement(List <T> liste) {
-		ListIterator<T> listIterateurSensLogique =liste.listIterator();
-		ListIterator<T> listIterateurSensInverse =liste.listIterator();
 		return true;
-
 	}
 }
