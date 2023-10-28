@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import cartes.Probleme.Type;
+import utils.Utils;
 
 public class JeuDeCartes {
 	private Carte[] typesDeCartes=new Carte[19];
@@ -37,6 +38,7 @@ public class JeuDeCartes {
         		listeCartes.add(typesDeCartes[i]);
         	}
         }
+        listeCartes=Utils.melanger(listeCartes);
 	}
 
 	public Carte[] getTypesDeCartes() {

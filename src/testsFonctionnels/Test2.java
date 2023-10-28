@@ -7,6 +7,7 @@ import java.util.List;
 
 import cartes.Attaque;
 import cartes.Bataille;
+import cartes.Borne;
 import cartes.Botte;
 import cartes.Carte;
 import cartes.JeuDeCartes;
@@ -28,6 +29,9 @@ public class Test2 {
 		Bataille carteReparation3 =new Parade(3,paradeAccident);
 		Botte carteAs1= new Botte(1,botteAccident);
 		Botte carteAs2= new Botte(1,botteAccident); 
+		Borne borne70 = new Borne(5,70);
+		Borne borne50 = new Borne(5,50);
+		Borne borne100 = new Borne(5,100);
 		/*System.out.println(carteAccident1.equals(carteAccident1));
 		System.out.println(carteAccident1.equals(carteAccident2));
 		System.out.println(carteAccident1.equals(carteReparation2));
@@ -38,31 +42,31 @@ public class Test2 {
 		System.out.println(carteReparation2.equals(carteReparation2));
 		System.out.println(carteAs1.equals(carteAs1));
 		System.out.println(carteAs1.equals(carteAs2));
-		System.out.println(carteAs1.equals(carteAccident1));*/
+		System.out.println(carteAs1.equals(carteAccident1));
+		System.out.println(borne70.equals(borne100));
+		System.out.println(borne70.equals(borne70));*/
 		JeuDeCartes jeu = new JeuDeCartes();
 		List<Carte> listCarte=jeu.getListeCartes();
-		/*System.out.println("Affichage de la liste\n");
+		System.out.println("~Affichage de la liste");
 		System.out.println(listCarte);
-		for (Carte carte:listCarte) {
-			System.out.println(carte);
-			
-		}
-		System.out.println("CheckCount du jeu sans modification "+jeu.checkCount());
-		listCarte.remove(0);
-		System.out.println("CheckCount du jeu apr√®s modification "+jeu.checkCount());*/
+		//System.out.println("CheckCount du jeu sans modification "+jeu.checkCount());
+		//listCarte.remove(0);
+		//System.out.println("CheckCount du jeu apr√®s modification "+jeu.checkCount());
 		testMethodesUtils();
-		System.out.println(jeu.checkCount());
+		System.out.println(listCarte);
+		System.out.println("Nombre d'occurences de chaque carte bien respect√© : "+jeu.checkCount());
 		}
 		public static void testMethodesUtils(){
 			JeuDeCartes jeu=new JeuDeCartes(); 
 			List<Carte>listeCarteNonMelangee=jeu.getListeCartes();
 			List<Carte>listeCarteAvecModifs=new ArrayList<>(listeCarteNonMelangee);
-			System.out.println("~Liste avant mÈlange\n"+listeCarteAvecModifs); 
+			System.out.println("~Liste avant m√©lange\n"+listeCarteAvecModifs); 
 			listeCarteAvecModifs=Utils.melanger(listeCarteAvecModifs);
-			System.out.println("~Liste aprËs mÈlange\n"+listeCarteAvecModifs);
-			System.out.println("~Liste mÈlangÈe sans erreur : "+Utils.verifierMelange(listeCarteNonMelangee,listeCarteAvecModifs));
+			System.out.println("~Liste apr√®s m√©lange\n"+listeCarteAvecModifs);
+			System.out.println("~Liste m√©lang√©e sans erreur : "+Utils.verifierMelange(listeCarteNonMelangee,listeCarteAvecModifs));
+			System.out.println("La liste pr√©c√©dente est rassembl√©e : "+Utils.verifierRassemblement(listeCarteAvecModifs));
 			listeCarteAvecModifs=Utils.rassembler(listeCarteAvecModifs); 
-			System.out.println("~Liste aprËs rassemblement\n"+listeCarteAvecModifs);
-			System.out.println("~Liste rassemblÈe sans erreur : "+Utils.verifierRassemblement(listeCarteAvecModifs)); 
-		}
+			System.out.println("~Liste apr√®s rassemblement\n"+listeCarteAvecModifs);
+			System.out.println("~Liste rassembl√©e sans erreur : "+Utils.verifierRassemblement(listeCarteAvecModifs)); 
+			}
 }

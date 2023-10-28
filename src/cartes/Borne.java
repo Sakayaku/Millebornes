@@ -20,7 +20,7 @@ public class Borne extends Carte {
 	public boolean equals(Object obj) {
 		if(obj instanceof Borne){
 			Borne borne = (Borne) obj;
-		return km==borne.getKm();
+			return km==borne.getKm();
 		}else {
 			return false;
 		}
