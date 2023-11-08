@@ -3,28 +3,34 @@ package jeu;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import cartes.Bataille;
 import cartes.Borne;
 import cartes.Botte;
 import cartes.Carte;
+import cartes.FinLimite;
 import cartes.Limite;
-import cartes.Main;
-import cartes.MainAsListe;
+import cartes.Probleme.Type;
 
 public class Joueur{
 
 	private String nom;
 	List<Limite> pileLimite = new ArrayList<>();
-	List<Limite> pileFinLimite = new ArrayList<>();
 	List<Carte> pileBataille = new ArrayList<>();
 	List<Borne> collecBorne = new ArrayList<>();
-	HashSet<Botte> ensembleBotte = new HashSet<>();
+	Set<Botte> ensembleBotte = new HashSet<>();
 	private MainAsListe main;
 		
-	public Joueur(String nom) {
+	public Joueur(String nom, List<Limite> pileLimite, List<Carte> pileBataille, List<Borne> collecBorne, HashSet<Botte> ensembleBotte ) {
 		this.nom=nom;
+		this.pileLimite=pileLimite;
+		this.pileBataille=pileBataille;
+		this.collecBorne=collecBorne;
+		this.ensembleBotte=ensembleBotte;
 	}
 
 	public String getNom() {
@@ -35,10 +41,6 @@ public class Joueur{
 		return pileLimite;
 	}
 
-	public List<Limite> getPileFinLimite() {
-		return pileFinLimite;
-	}
-
 	public List<Carte> getPileBataille() {
 		return pileBataille;
 	}
@@ -47,7 +49,7 @@ public class Joueur{
 		return collecBorne;
 	}
 
-	public HashSet<Botte> getEnsembleBotte() {
+	public Set<Botte> getEnsembleBotte() {
 		return ensembleBotte;
 	}
 	
@@ -69,7 +71,7 @@ public class Joueur{
 	}
 	
 	public void donner(Carte carte) {
-		
+		main.prendre(carte);
 	}
 	
 	public Carte prendreCarte(List<Carte> sabot) {
@@ -78,6 +80,31 @@ public class Joueur{
 		}else {
 			donner(sabot.get(0));
 			return sabot.get(0);
+		}
+	}
+	
+	public int getKM() {
+		int resultat=0;
+		for (Iterator <Borne> iter = collecBorne.iterator(); iter.hasNext();) {
+			Borne borne = iter.next();
+			resultat+=borne.getKm();
+		}
+		return resultat;
+	}
+	public int getLimite() {
+		Botte botteFeu=new Botte(1,Type.FEU);
+		if (pileLimite.isEmpty() || pileLimite.get(pileLimite.size()-1) instanceof FinLimite || ensembleBotte.contains(botteFeu)){
+			return 200;
+		}else {
+			return 50;
+		}
+	}
+	public Boolean estBloque() {
+		Botte bottePrio=new Botte(1,Type.FEU);
+		if ((pileBataille.isEmpty() && ensembleBotte.contains(bottePrio))) {
+			return false;
+		}else {
+			return true;
 		}
 	}
 	

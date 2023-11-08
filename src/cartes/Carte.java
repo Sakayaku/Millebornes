@@ -1,6 +1,7 @@
 package cartes;
 
 public abstract class Carte {
+	public static final FEU_ROUGE 
 	protected Carte(int nombre) {
 		this.nombre = nombre;
 	}

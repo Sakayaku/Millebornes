@@ -66,19 +66,7 @@ public class Utils {
 		}
 		return resultat;
 	}
-	
-	public static <T> T elementListe(List <T> liste, int commencement) {
-		T elementBonSens = null;
-		for (ListIterator<T> listIterateurSensLogique =liste.listIterator(commencement);listIterateurSensLogique.hasNext();) {
-			elementBonSens=listIterateurSensLogique.next();
-			System.out.println("elementBonSens est "+elementBonSens);
-			if (listIterateurSensLogique.hasNext() && elementBonSens.equals(listIterateurSensLogique.next())) {
-				elementBonSens=listIterateurSensLogique.next();
-			}
-		}
-			return elementBonSens;
-	}
-	
+
 	public static <T> boolean verifierRassemblement(List <T> liste) { 
 		T elementBonSens = null;
 		T elementMauvaisSens=null;

@@ -1,7 +1,10 @@
-package cartes;
+package jeu;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
+import cartes.Carte;
 
 public class MainAsListe implements Main {
 
@@ -10,12 +13,18 @@ public class MainAsListe implements Main {
 	public MainAsListe() {
 	}
 	
-	void prendre(Carte carte) {
+	public void prendre(Carte carte) {
 		liste.add(carte);
 	}
-	void jouer(Carte carte) {
+	public void jouer(Carte carte) {
 		assert liste.contains(carte);
 		liste.remove(carte);
 	}
+
+	@Override
+	public Iterator<Carte> iterateur() {
+		return ;
+	}
+
 
 }
