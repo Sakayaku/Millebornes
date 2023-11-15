@@ -13,7 +13,7 @@ public abstract class Carte {
 	public static final Botte AS_VOLANT=new Botte(1,(Type.ACCIDENT));
 	public static final Botte INCREVABLE=new Botte(1,(Type.CREVAISON));
 	public static final Attaque FEU_ROUGE=new Attaque(1,(Type.FEU));
-	public static final Parade FEU_Vert=new Parade(1,(Type.FEU));
+	public static final Parade FEU_VERT=new Parade(1,(Type.FEU));
 	public void setNombre(int nombre) {
 		this.nombre = nombre;
 	}
