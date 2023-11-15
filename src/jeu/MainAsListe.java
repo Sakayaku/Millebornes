@@ -22,9 +22,13 @@ public class MainAsListe implements Main {
 	}
 
 	@Override
-	public Iterator<Carte> iterateur() {
-		return ;
+	public Iterator<Carte> iterator() {
+		return iterateur();
 	}
 
-
+	@Override
+	public Iterator<Carte> iterateur() {
+		return liste.iterator();
+	}
+	
 }

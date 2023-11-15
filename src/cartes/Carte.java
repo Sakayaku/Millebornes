@@ -1,13 +1,19 @@
 package cartes;
 
+import cartes.Probleme.Type;
+
 public abstract class Carte {
-	public static final FEU_ROUGE 
 	protected Carte(int nombre) {
 		this.nombre = nombre;
 	}
 
 	private int nombre;
-
+	public static final Botte VEHI_PRIO=new Botte(1,(Type.FEU));
+	public static final Botte CITERNE_ESSENCE=new Botte(1,(Type.ESSENCE));
+	public static final Botte AS_VOLANT=new Botte(1,(Type.ACCIDENT));
+	public static final Botte INCREVABLE=new Botte(1,(Type.CREVAISON));
+	public static final Attaque FEU_ROUGE=new Attaque(1,(Type.FEU));
+	public static final Parade FEU_Vert=new Parade(1,(Type.FEU));
 	public void setNombre(int nombre) {
 		this.nombre = nombre;
 	}
