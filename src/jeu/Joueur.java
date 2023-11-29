@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+
 import cartes.Attaque;
 import cartes.Bataille;
 import cartes.Borne;
@@ -22,6 +24,7 @@ public class Joueur {
 	List<Borne> collecBorne = new ArrayList<>();
 	HashSet<Botte> ensembleBotte = new HashSet<>();
 	private MainAsListe main;
+	private Jeu jeu;
 
 	public Joueur(String nom, LinkedList<Limite> pileLimite, LinkedList<Bataille> pileBataille, List<Borne> collecBorne,
 			HashSet<Botte> ensembleBotte) {
@@ -54,6 +57,14 @@ public class Joueur {
 
 	public MainAsListe getMain() {
 		return main;
+	}
+	
+	public Jeu getJeu() {
+		return jeu;
+	}
+
+	public void setJeu(Jeu jeu) {
+		this.jeu = jeu;
 	}
 
 	@Override
@@ -118,7 +129,6 @@ public class Joueur {
 			return true;
 		}
 		Bataille sommet = pileBataille.get(0);
-		//System.out.println("La carte du sommet est "+sommet);
 		if (sommet.equals(Carte.FEU_VERT)) {
 			return false;
 		}
@@ -150,6 +160,54 @@ public class Joueur {
 			return false;
 		}
 		return true;
+	}
+	
+	public HashSet coupsPossibles(List <Joueur> participants){
+		HashSet ensembleCoups = new HashSet<>();
+		for (Joueur joueur:participants) {
+			for (Carte carte : joueur.main) {
+				Coup coup=new Coup(carte,joueur);
+				if (coup.estValide(joueur)) {
+					ensembleCoups.add(coup);
+				}
+			}
+		}
+		return ensembleCoups;
+	}
+	
+	public HashSet coupsParDefault() {
+		HashSet ensembleCoupsDefault = new HashSet();
+		for (Carte carte : this.main) {
+			Coup coup=new Coup(carte,this);
+			if (coup.estValide(this)) {
+				ensembleCoupsDefault.add(coup);
+			}
+		}
+		return ensembleCoupsDefault;
+	}
+	
+	public Coup selectionner() {
+		List <Joueur> j=new ArrayList<>();
+		j.add(this);
+		Set coupPossibles=coupsPossibles(j);
+		if (coupPossibles.isEmpty()) {
+			return null;
+		}else {
+			((Coup) coupPossibles.toArray()[0]).jouer(this);
+			return ((Coup) coupPossibles.toArray()[0]);
+		}
+	}
+	
+	public Coup rendreCarte() {
+		List <Joueur> j=new ArrayList<>();
+		j.add(this);
+		Set coupPossibles=coupsParDefault();
+		if (coupPossibles.isEmpty()) {
+			return null;
+		}else {
+			((Coup) coupPossibles.toArray()[0]).jouer(this);
+			return ((Coup) coupPossibles.toArray()[0]);
+		}
 	}
 
 }

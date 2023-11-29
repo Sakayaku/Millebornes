@@ -1,6 +1,7 @@
 package cartes;
 
 import cartes.Probleme.Type;
+import jeu.Joueur;
 
 public abstract class Carte {
 	protected Carte(int nombre) {
@@ -20,5 +21,9 @@ public abstract class Carte {
 
 	public int getNombre() {
 		return nombre;
+	}
+	
+	public boolean appliquer(Joueur j) {
+		return (j.getCollecBorne().contains(this) || j.getEnsembleBotte().contains(this) ||j.getPileBataille().contains(this) || j.getPileLimite().contains(this));
 	}
 }

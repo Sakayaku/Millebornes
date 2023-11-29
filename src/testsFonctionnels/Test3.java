@@ -56,16 +56,15 @@ public class Test3 {
 		System.out.println(joueur2.getLimite());
 		System.out.println("Sommet de la pile est une fin de limite");
 		pileLimite.addFirst(carteFinLimite);
+		System.out.println(joueur2.getLimite());
 		System.out.println("Le joueur a une botte feu");
 		ensembleBotte.add(botteFeu);
 		System.out.println(joueur2.getLimite());
 		
 		Joueur joueur3=new Joueur("Joueur3", pileLimite, pileBataille, collecBorne, ensembleBotte);
-		System.out.println(joueur3.getLimite());
-		System.out.println("On devrait renvoyer 50");
+		System.out.println("Sommet de la pile est une dÃ©but de limite");
 		pileLimite.addFirst(carteDebutLimite);
-		Joueur joueur4=new Joueur("Joueur4", pileLimite, pileBataille, collecBorne, ensembleBotte);
-		System.out.println(joueur4.getLimite());
+		System.out.println(joueur3.getLimite());
 		
 		
 		
@@ -82,7 +81,7 @@ public class Test3 {
 		pileBataille.addFirst(Carte.FEU_ROUGE);
 		System.out.println("On ajoute un feu rouge "+joueur5.estBloque());	
 		ensembleBotte.add(Carte.VEHI_PRIO);
-		System.out.println("On ajoute le véhicule prio "+joueur5.estBloque());
+		System.out.println("On ajoute le vï¿½hicule prio "+joueur5.estBloque());
 		pileBataille.addFirst(accident);
 		System.out.println("On ajoute un accident "+joueur5.estBloque());
 		ensembleBotte.add(Carte.AS_VOLANT);
@@ -92,7 +91,7 @@ public class Test3 {
 		pileBataille.addFirst(essence);
 		System.out.println("On ajoute de l'essence "+joueur5.estBloque());
 		ensembleBotte.clear();
-		System.out.println("On a effacé les bottes "+joueur5.estBloque());
+		System.out.println("On a effacï¿½ les bottes "+joueur5.estBloque());
 		pileBataille.addFirst(Carte.FEU_VERT);
 		System.out.println("On rajoute un feu vert "+joueur5.estBloque());
 		
